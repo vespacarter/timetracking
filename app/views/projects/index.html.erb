@@ -1,0 +1,11 @@
+<h1> Welcome to my Tracking Tool </h1>
+<h3> Projects </h3>
+<ul>
+	<% @projects.each do |project| %>
+		<li> <%= project.name %>
+		<% if project.description.present? %>
+		 - <i><%= project.description %></i>
+		<% end %>
+		 - Created at <%= project.created_at%></li>
+	<% end %>
+</ul>
