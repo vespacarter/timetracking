@@ -7,5 +7,6 @@
 		 - <i><%= project.description %></i>
 		<% end %>
 		 - Created at <%= project.created_at%></li>
+		 	<%= link_to("Delete", "projects/#{project.id}", method: :delete) %>
 	<% end %>
 </ul>

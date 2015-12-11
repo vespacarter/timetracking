@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/contact' => 'site#contact'
   get '/projects' => 'projects#index'
   get '/projects/new' => 'projects#new'
-  get '/projects/:id' => "projects#show"
+  get '/projects/:id' => "projects#show", as: "project"
   post '/projects' => 'projects#create'
   get '/projects/:id/edit' => 'projects#edit'
+  patch '/projects/:id' => 'projects#update'
+  delete '/projects/:id' => 'projects#destroy'
 end

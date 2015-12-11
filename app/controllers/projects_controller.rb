@@ -22,4 +22,21 @@ class ProjectsController < ApplicationController
 		redirect_to '/projects'
 	end 
 
+	def edit
+		@project = Project.find(params[:id])
+
+	end
+
+	def update
+		@project = Project.find(params[:id])
+		@project.update(name: params[:project][:name], description: params[:project][:description])
+
+		redirect_to "/projects/#{params[:id]}"
+	end
+
+	def destroy
+		p = Project.find(params[:id])
+		p.destroy
+		redirect_to "/projects"
+	end
 end
