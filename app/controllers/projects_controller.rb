@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project = Project.find(params[:id])
+		@project = Project.find(params[:project_id])
 		rescue ActiveRecord::RecordNotFound
 			render 'no_projects_found'
 	end
@@ -23,19 +23,19 @@ class ProjectsController < ApplicationController
 	end 
 
 	def edit
-		@project = Project.find(params[:id])
+		@project = Project.find(params[:project_id])
 
 	end
 
 	def update
-		@project = Project.find(params[:id])
+		@project = Project.find(params[:project_id])
 		@project.update(name: params[:project][:name], description: params[:project][:description])
 
-		redirect_to "/projects/#{params[:id]}"
+		redirect_to "/projects/#{params[:project_id]}"
 	end
 
 	def destroy
-		p = Project.find(params[:id])
+		p = Project.find(params[:project_id])
 		p.destroy
 		redirect_to "/projects"
 	end

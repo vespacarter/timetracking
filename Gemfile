@@ -42,5 +42,8 @@ group :development, :test do
 
   # pry for rails
   gem 'pry-rails'
+
+  #Faker
+  gem 'faker'
 end
 

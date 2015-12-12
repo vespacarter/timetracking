@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
 # verbo 'ruta' => 'controlador#accion'
+
   get '/' => 'site#home'
   get '/contact' => 'site#contact'
-  get '/projects' => 'projects#index'
-  get '/projects/new' => 'projects#new'
-  get '/projects/:id' => "projects#show", as: "project"
-  post '/projects' => 'projects#create'
-  get '/projects/:id/edit' => 'projects#edit'
-  patch '/projects/:id' => 'projects#update'
-  delete '/projects/:id' => 'projects#destroy'
+  resources :projects, only: [:index, :show, :new, :create, :update, :destroy] do
+  	resources :entries ,only: [:index, :new, :create, :destroy]
+  end
 end
