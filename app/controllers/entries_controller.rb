@@ -13,10 +13,13 @@ class EntriesController < ApplicationController
 	end
 
 	def create
-		@p = Project.find(params[:project_id])
-		entry = @p.entries.new(entry_params)
-		entry.save
-		redirect_to "/projects/#{@p.id}/entries"
+		@project = Project.find(params[:project_id])
+		@entry = @project.entries.new(entry_params)
+		if @entry.save
+			redirect_to "/projects/#{@p.id}/entries"
+		else
+			render "new"
+		end
 	end
 
 	private
